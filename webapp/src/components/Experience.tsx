@@ -1,24 +1,44 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+
 export default function Experience() {
+  const [isExpanded, setIsExpanded] = useState(false);
   const experiences = [
     {
-      role: "AI Intern - Marketing",
-      company: "Dar Global",
-      date: "29 Sep 2025 - 21 Dec 2025",
-      description: "Applying AI and Data Scraping techniques to enhance marketing strategies. Working on data-driven marketing solutions and AI-powered campaign optimization.",
-      linkText: "View Recommendation",
+      role: "FrontMan of Media Teams",
+      company: "Freelance & Agency Work",
+      date: "Present",
+      description: "Managing and leading media content teams. Overseeing the video production process from rough cuts to final delivery, ensuring smooth workflows, and collaborating directly with creators to maintain high-quality storytelling.",
+      subRoles: [
+        { title: "Head Videographer", host: "Olympiad 25, HITEC University", desc: "Led the videography team to capture and produce event highlights and promotional content." },
+        { title: "Director Media", host: "Robo Fiesta 8, HITEC University", desc: "Directed overall media strategy, supervised content production, and managed media team operations for the event." },
+        { title: "Assistant Media Head", host: "HIROBO 7.0, HITEC University", desc: "Supported media operations including video production, editing, and team coordination." },
+        { title: "Executive Videographer", host: "HITEC Press Club", desc: "Handled high-level video production, filming, and editing for official press club content." },
+        { title: "Secretary Marketing", host: "(LDS) HITEC University", desc: "Managed visual marketing content for university promotions and events." },
+        { title: "Head Content Creator", host: "HITEC Press Club", desc: "Oversaw media coverage of university activities and created engaging content." },
+        { title: "Media Relation Officer", host: "Young Peace & Development Corps (YPDC), HITEC Chapter", desc: "Managed communications, created event coverage, handled digital publicity, and collaborated with teams to promote organizational visibility." },
+        { title: "Head Documentary", host: "Rafahiyah Foundation", desc: "Directed and edited impactful documentaries for awareness and social campaigns." },
+      ],
+      linkText: "",
+      linkUrl: "",
     },
     {
-      role: "Data Science Intern",
-      company: "Digital Empowerment Network (DEN)",
-      date: "15 Jul 2025 - 2 Sep 2025",
-      description: "Worked on real-world data science project. Built and deployed ML models using Python, XGBoost, and Streamlit. Gained experience in feature engineering, model evaluation, and ML-based web app deployment.",
-      linkText: "View Certificate",
+      role: "Video Editor",
+      company: "Pak Media Industry (PMI)",
+      date: "Recent",
+      description: "I worked on different editing projects for media content and freelance clients, focusing on clean, engaging visuals. PMI is an artist facilitation agency that helps creatives grow and connect in the industry.",
+      linkText: "View on Instagram",
+      linkUrl: "https://www.instagram.com/pakmediaindustry?igsh=MWtmbTZ5NDM3bHhocA==",
     },
     {
-      role: "Artificial Intelligence Intern",
-      company: "Software Productivity Strategists",
-      date: "15 Jul 2024 - 1 Sep 2024",
-      description: "Contributed to the development of an AI-powered assistant for intelligent user interaction. Applied Natural Language Processing and ML techniques to improve AI assistant performance. Worked collaboratively with development teams to integrate AI modules into functional prototypes.",
+      role: "Part-Time Video Editor",
+      company: "Tree Technologies (YouTube Automation Agency)",
+      date: "Oct 2025 – Present",
+      description: "Editing and producing engaging video content for YouTube automation channels, optimizing videos for audience retention and platform performance.",
+      linkText: "",
+      linkUrl: "",
     }
   ];
 
@@ -50,12 +70,47 @@ export default function Experience() {
                   </span>
                 </div>
                 
-                <p className="text-neutral-400 text-lg leading-relaxed font-light mb-6">
+                <p className="text-neutral-400 text-lg leading-relaxed font-light mb-8">
                   {exp.description}
                 </p>
 
+                {/* Sub Roles List Toggle */}
+                {exp.subRoles && (
+                  <div className="border-t border-white/10 pt-6 mt-6">
+                    <button 
+                      onClick={() => setIsExpanded(!isExpanded)}
+                      className="flex items-center gap-2 text-sm font-medium text-white hover:text-blue-400 transition-colors mb-4"
+                    >
+                      {isExpanded ? (
+                        <>See Less <ChevronUp className="w-4 h-4" /></>
+                      ) : (
+                        <>See All Roles ({exp.subRoles.length}) <ChevronDown className="w-4 h-4" /></>
+                      )}
+                    </button>
+
+                    {isExpanded && (
+                      <div className="space-y-6 animate-in slide-in-from-top-2 fade-in duration-300">
+                        {exp.subRoles.map((sub, sIdx) => (
+                          <div key={sIdx} className="flex flex-col gap-1">
+                            <div className="flex flex-wrap items-baseline gap-2">
+                              <h4 className="text-lg font-medium text-white">{sub.title}</h4>
+                              <span className="text-sm font-mono text-blue-400/80 uppercase tracking-wider">{sub.host}</span>
+                            </div>
+                            <p className="text-neutral-400 font-light">{sub.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {exp.linkText && (
-                  <a href="#" className="inline-flex items-center text-sm font-medium text-white hover:text-blue-400 underline underline-offset-4 decoration-white/30 hover:decoration-blue-400 transition-all">
+                  <a 
+                    href={exp.linkUrl || "#"} 
+                    target={exp.linkUrl ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center mt-6 text-sm font-medium text-white hover:text-blue-400 underline underline-offset-4 decoration-white/30 hover:decoration-blue-400 transition-all"
+                  >
                     {exp.linkText}
                   </a>
                 )}

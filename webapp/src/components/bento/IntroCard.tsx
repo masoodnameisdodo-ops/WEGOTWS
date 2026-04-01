@@ -6,20 +6,18 @@ export default function IntroCard() {
           Who I am
         </h3>
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-          Hi, I&apos;m Shahwaiz.
+          Hi, I&apos;m Muhammad Masood.
         </h1>
-        <p className="text-neutral-300 text-lg md:text-xl font-light max-w-lg mb-6 leading-relaxed">
-          I’m an AI Engineering student with a strong focus on Machine Learning and Data Science. I have hands-on experience in developing intelligent, data-driven applications through real-world projects. Passionate about solving problems and writing efficient code, I aim to apply AI to create impactful solutions.
-        </p>
-      </div>
-
-      <div className="mt-auto pt-6 border-t border-white/10">
-        <h4 className="text-sm font-mono text-neutral-400 mb-2 uppercase tracking-widest">
-          Education
-        </h4>
-        <div className="flex flex-col gap-1">
-          <p className="text-white font-medium text-lg">Bachelor’s in Artificial Intelligence</p>
-          <p className="text-neutral-400 text-md">HITEC University Taxila (2023 - 2027)</p>
+        <div className="text-neutral-300 text-lg md:text-xl font-light max-w-lg mb-6 flex flex-col gap-4 leading-relaxed">
+          <p>
+            I’m a video editor who genuinely enjoys turning simple clips into something people actually want to watch.
+          </p>
+          <p>
+            I got into editing because I love storytelling—how the right cut, music, or timing can completely change the feel of a video. Since then, I’ve been learning, experimenting, and improving with every project I work on.
+          </p>
+          <p>
+            I usually work on content like YouTube videos, short-form content, and social media edits. I pay attention to the small details—smooth cuts, clean transitions, good pacing—because those are the things that make a video stand out.
+          </p>
         </div>
       </div>
     </>

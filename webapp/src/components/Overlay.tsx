@@ -31,26 +31,28 @@ export default function Overlay() {
       {/* Section 1 */}
       <motion.div
         style={{ opacity: opacity1, y: y1 }}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center"
+        className="absolute inset-0 flex flex-col md:flex-row items-center justify-between w-full h-full px-4 md:px-12 pointer-events-auto"
       >
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4 drop-shadow-lg">
-          Shahwaiz Amer
-        </h1>
-        <p className="text-xl md:text-2xl text-neutral-300 font-light tracking-wide max-w-xl leading-relaxed">
-          AI Engineering student.<br/> Focusing on Machine Learning & Data Science.
-        </p>
+        <div className="flex flex-col items-start group cursor-default mt-32 md:mt-[25vh] transition-transform duration-500 hover:scale-110 hover:translate-x-4">
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-0 drop-shadow-2xl">
+            Masood
+          </h1>
+          <p className="text-2xl md:text-3xl text-neutral-300 font-medium tracking-widest pl-1">
+            wegotws
+          </p>
+        </div>
+
+        <div className="text-right md:w-1/3 mb-32 md:mb-0 md:mt-[25vh]">
+          <p className="text-3xl md:text-5xl text-white font-light tracking-tight leading-tight drop-shadow-xl flex flex-col items-end">
+            <span>Transforming</span>
+            <span className="font-medium text-neutral-300 italic -mt-2">Raw content</span>
+            <span>into</span>
+            <span className="font-bold">Polished Brilliance.</span>
+          </p>
+        </div>
       </motion.div>
 
-      {/* Section 2 */}
-      <motion.div
-        style={{ opacity: opacity2, y: y2 }}
-        className="absolute inset-0 flex flex-col justify-center items-start text-left pl-4 md:pl-16"
-      >
-        <h2 className="text-5xl md:text-7xl font-semibold tracking-tight text-white mb-4 max-w-xl drop-shadow-md leading-tight">
-          Building intelligent,<br /> data-driven apps.
-        </h2>
-        <div className="w-20 h-1 bg-white/50 rounded-full mt-4"></div>
-      </motion.div>
+
 
       {/* Section 3 */}
       <motion.div

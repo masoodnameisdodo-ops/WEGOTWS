@@ -16,20 +16,23 @@ export default function VideoCard() {
 
   return (
     <>
-      <div className="absolute inset-0 bg-neutral-900">
-        <img
-          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop"
-          alt="Cinematic Car"
+      <div className="absolute inset-0 bg-neutral-900 pointer-events-none">
+        <video
+          ref={videoRef}
+          src="/gallery/wegot banner video.mp4"
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
           className="w-full h-full object-cover opacity-80"
           onError={(e) => {
-            // Fallback gradient if missing
-            (e.target as HTMLImageElement).style.display = 'none';
+            (e.target as HTMLVideoElement).style.display = 'none';
           }}
         />
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-80 pointer-events-none" />
 
       {/* Controls */}
       <div className="absolute bottom-6 right-6 z-10">

@@ -1,98 +1,65 @@
 "use client";
 
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export default function Projects() {
   const projects = [
     {
-      title: "Edu Pilot Tech Startup",
-      description: "Developed a full-stack EdTech SaaS startup in Django and Tailwind, offering AI productivity tools for students. Engineered an AI RAG pipeline for secure PDF chatting, using backend page-slicing to enforce a freemium model. Implemented a gamified reward system alongside custom utilities like an ATS resume builder and a text-to-handwriting converter.",
-      tags: ["Django", "Tailwind", "AI RAG", "SaaS"],
-      link: "https://edupilot.com.pk",
-      linkText: "edupilot.com.pk",
-      icon: <ExternalLink className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop"
+      title: "Hamza Shanwari's dynamic editing showcase",
+      description: "I had the opportunity to work with Hamza Shanwari, where I edited three different videos covering a range of engaging and informative topics.",
+      tags: ["Video Editing", "Storytelling", "Dynamic Pacing"],
+      link: "#",
+      image: "/gallery/Hamza Shanwari’s dynamic editing showcase (1).png",
+      youtubeLinks: [
+        { id: "rCjLrX1he6U", url: "https://youtu.be/rCjLrX1he6U" },
+        { id: "9PaG0AIXqQ4", url: "https://youtu.be/9PaG0AIXqQ4" },
+        { id: "fMvJ-axCMnI", url: "https://youtu.be/fMvJ-axCMnI" }
+      ]
     },
     {
-      title: "FitAI - Fitness and Diet Assistant",
-      description: "An intelligent fitness and diet assistant powered by AI to help users achieve their health goals with personalized recommendations.",
-      tags: ["Python", "AI", "Data Science"],
+      title: "Pine City (Islamabad)",
+      description: "Designed marketing visuals for a real estate developer of Pine City Islamabad, creating high-quality covers for reels and posters that highlight luxury living, modern infrastructure, and strong visual branding to enhance client engagement and promotion.",
+      tags: ["Marketing Visuals", "Real Estate", "Branding"],
       link: "#",
-      linkText: "Test It",
-      icon: <ExternalLink className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop"
+      image: "/gallery/pine city.jpeg"
     },
     {
-      title: "Real Estate Price Predictor",
-      description: "A machine learning model that predicts real estate prices based on various factors like location, size, and amenities.",
-      tags: ["Machine Learning", "Python"],
-      link: "#",
-      linkText: "GitHub",
-      icon: <Github className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Ride Sharing System",
-      description: "A comprehensive ride-sharing platform connecting drivers and passengers with real-time tracking and payment integration.",
-      tags: ["System Design", "Python"],
-      link: "#",
-      linkText: "GitHub",
-      icon: <Github className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "IMDB Movies Reviews Prediction",
-      description: "A sentiment analysis model that predicts movie review ratings based on text analysis using natural language processing.",
-      tags: ["NLP", "Machine Learning"],
-      link: "#",
-      linkText: "Test It",
-      icon: <ExternalLink className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Spam Email Detection",
-      description: "An AI-powered system that automatically detects and filters spam emails using machine learning algorithms.",
-      tags: ["Classification", "Python"],
-      link: "#",
-      linkText: "GitHub",
-      icon: <Github className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Coffee Shop Sales and Analysis",
-      description: "A comprehensive data analysis dashboard for coffee shop sales, inventory management, and customer insights.",
-      tags: ["Data Analysis", "Power-BI"],
-      link: "#",
-      linkText: "GitHub",
-      icon: <Github className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Heart Disease Predictor",
-      description: "A machine learning model that predicts the risk of heart disease based on various health parameters and medical data.",
-      tags: ["Predictive Models", "ML"],
-      link: "#",
-      linkText: "Test It",
-      icon: <ExternalLink className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1505506874110-6a7a6c9924cb?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Lungs Disease Predictor",
-      description: "An AI-powered system that predicts lung diseases using medical imaging and patient data analysis.",
-      tags: ["Deep Learning", "AI"],
-      link: "#",
-      linkText: "Test It",
-      icon: <ExternalLink className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Jarvis AI Voice Assistant Multimodal",
-      description: "A multimodal AI voice assistant capable of processing voice commands, text, and visual inputs for comprehensive assistance and automation.",
-      tags: ["AI Automation", "Python"],
-      link: "#",
-      linkText: "GitHub",
-      icon: <Github className="w-4 h-4" />,
-      image: "https://images.unsplash.com/photo-1535378273068-9bbdc2f5e315?q=80&w=800&auto=format&fit=crop"
+      title: "Concert Highlights",
+      description: "A single project collection featuring edits from multiple concert performances and artist reels.",
+      tags: ["Concert", "Instagram Reels", "Live Performance"],
+      link: "https://www.instagram.com/reel/DIjSpzZi3B9/?igsh=ZXYzbWN0cDd6ZjM4",
+      linkText: "Watch Featured Reel",
+      image: "/gallery/concert.jpeg",
+      reelLinks: [
+        {
+          name: "DJ Hanzi",
+          url: "https://www.instagram.com/reel/DIjSpzZi3B9/?igsh=ZXYzbWN0cDd6ZjM4"
+        },
+        {
+          name: "Arshman",
+          url: "https://www.instagram.com/reel/DGlUw-ANiQp/?igsh=aGdzcnM0OWFlajgz"
+        },
+        {
+          name: "Falak shabi",
+          url: "https://www.instagram.com/reel/DI_YXb-i1Z-/?igsh=MWZ3enZteHI0Nmgxbw=="
+        },
+        {
+          name: "Qawali Night",
+          url: "https://www.instagram.com/reel/DJYhHkVsokO/?igsh=MTMyYnBlbml6YXRzaA=="
+        },
+        {
+          name: "Ahmad Butt and DJ Ehni",
+          url: "https://www.instagram.com/reel/DSfIdtVjZk1/?igsh=cGJ5NXg1eW94Z2po"
+        },
+        {
+          name: "Sufi Night Taxila",
+          url: "https://www.instagram.com/reel/DSHNS_dAjb4/?igsh=MWkyYWtuc3ZjZ2E5cw=="
+        },
+        {
+          name: "Jeem se Jaffer",
+          url: "https://www.instagram.com/reel/DJg4WWXii10/?igsh=NWlvZ2ZwYmtjNWZj"
+        }
+      ]
     }
   ];
 
@@ -104,7 +71,7 @@ export default function Projects() {
             Projects
           </h2>
           <p className="text-neutral-400 text-lg md:text-xl max-w-2xl font-light">
-            A showcase of intelligent, data-driven applications and practical solutions.
+            A showcase of my recent video editing, pacing dynamics, and storytelling projects.
           </p>
         </div>
 
@@ -141,34 +108,80 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <a 
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-white hover:text-black shrink-0"
-                    aria-label={project.linkText}
-                  >
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
                 </div>
                 
                 <div className="mt-auto">
                   <h3 className="text-2xl font-medium text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-neutral-400 text-md mb-8 leading-relaxed font-light">
+                  <p className="text-neutral-400 text-md mb-6 leading-relaxed font-light">
                     {project.description}
                   </p>
+
+                  {/* YouTube Videos Grid */}
+                  {project.youtubeLinks && (
+                    <div className="grid grid-cols-3 gap-3 mb-8">
+                      {project.youtubeLinks.map((vid, vIdx) => (
+                        <a 
+                          key={vIdx} 
+                          href={vid.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="relative group/yt overflow-hidden rounded-lg border border-white/10 aspect-video block bg-neutral-900 shadow-md shadow-black/50"
+                        >
+                          <img 
+                            src={`https://img.youtube.com/vi/${vid.id}/hqdefault.jpg`} 
+                            alt={`YouTube Video ${vIdx + 1}`} 
+                            className="w-full h-full object-cover group-hover/yt:scale-110 transition-transform duration-500 opacity-80 group-hover/yt:opacity-100"
+                          />
+                          <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover/yt:opacity-100 transition-opacity">
+                            <div className="w-8 h-8 bg-[#FF0000] rounded-full flex items-center justify-center shadow-lg shadow-red-500/50 hover:scale-110 transition-transform">
+                              <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+
+                  {project.reelLinks && (
+                    <div className="mb-6 space-y-2">
+                      {project.reelLinks.map((item, itemIdx) => (
+                        item.url ? (
+                          <a
+                            key={itemIdx}
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-neutral-200 hover:bg-white/10 transition-colors"
+                          >
+                            <span>{item.name}</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        ) : (
+                          <div
+                            key={itemIdx}
+                            className="flex items-center justify-between rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-neutral-400"
+                          >
+                            <span>{item.name}</span>
+                            <span className="text-xs uppercase tracking-wide">Coming Soon</span>
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  )}
                   
-                  <a 
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-blue-400 transition-colors"
-                  >
-                    {project.icon}
-                    {project.linkText}
-                  </a>
+                  {project.link && project.link !== "#" && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors"
+                    >
+                      {project.linkText || "View Project"}
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </div>
               

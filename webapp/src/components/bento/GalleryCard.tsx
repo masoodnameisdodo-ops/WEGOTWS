@@ -1,16 +1,12 @@
 export default function GalleryCard() {
-  // Using generic placeholders 1-7. If they don't exist, it will just show the alt text
-  // but won't crash the Next.js dev server. We duplicate them so the CSS scroll is seamless.
+  // Paste your images in the `public/gallery` folder!
   const images = [
-    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop", // Cyber
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop", // Chip
-    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop", // Matrix Code
-    "https://images.unsplash.com/photo-1614729939124-032f0b5609ce?q=80&w=600&auto=format&fit=crop", // Dark Space
-    "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=600&auto=format&fit=crop", // Code
-    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop", // Abstract Liquid
-    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=600&auto=format&fit=crop"  // Setup
+    "/gallery/gallery 1.jpeg", 
+    "/gallery/gallery 2.jpeg",
+    "/gallery/gallery 3.jpeg"
   ];
-  const duplicatedImages = [...images, ...images];
+  // Duplicate more times since there are fewer images, to keep marquee seamless
+  const duplicatedImages = [...images, ...images, ...images, ...images, ...images];
 
   return (
     <div className="absolute inset-0 overflow-hidden w-full h-full flex flex-col justify-between">
