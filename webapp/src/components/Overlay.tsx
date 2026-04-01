@@ -17,10 +17,6 @@ export default function Overlay() {
   const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.2], [1, 1, 0]);
   const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
 
-  // Section 2: "I build digital experiences." (30% to 50%)
-  const opacity2 = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], [0, 1, 1, 0]);
-  const y2 = useTransform(scrollYProgress, [0.25, 0.35, 0.55], [50, 0, -50]);
-
   // Section 3: "Bridging design and engineering." (60% to 80%)
   const opacity3 = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], [0, 1, 1, 0]);
   const y3 = useTransform(scrollYProgress, [0.55, 0.65, 0.85], [50, 0, -50]);
