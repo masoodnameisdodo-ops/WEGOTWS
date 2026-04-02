@@ -174,25 +174,20 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
     };
   }, [drawFrame, scrollYProgress, isMobile]);
 
-  // ── MOBILE: lightweight static hero ──────────────────────────────────────
+  // ── MOBILE: first frame as static full-screen background ─────────────────
   if (isMobile) {
     return (
       <div ref={containerRef} className="relative bg-[#121212]">
-        <div
-          className="h-screen w-full overflow-hidden flex items-center justify-center"
-          style={{
-            background:
-              "radial-gradient(ellipse at 60% 40%, #1a1a2e 0%, #121212 70%)",
-          }}
-        >
-          {/* Subtle purple glow */}
-          <div
-            className="absolute inset-0 opacity-30 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.25) 0%, transparent 70%)",
-            }}
+        <div className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+          {/* First frame as static background image */}
+          <img
+            src="/sequence/frame_000_delay-0.041s.png"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ opacity: 0.95 }}
           />
+          {/* Dark overlay so text is readable */}
+          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
           {children}
         </div>
       </div>
