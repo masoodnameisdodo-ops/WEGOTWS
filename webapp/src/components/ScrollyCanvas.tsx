@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 
 const FRAME_COUNT = 193;
@@ -15,11 +15,21 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
   const currentFrameRef = useRef<number>(-1);
   const rafIdRef = useRef<number | null>(null);
   const resizeRafRef = useRef<number | null>(null);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
+
+  useEffect(() => {
+    const check = () => {
+      setIsMobile(
+        window.matchMedia("(max-width: 768px)").matches || "ontouchstart" in window
+      );
+    };
+    check();
+  }, []);
 
   const drawFrame = useCallback((index: number) => {
     const canvas = canvasRef.current;
@@ -29,19 +39,17 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
     const img = imagesRef.current[index];
     if (!img || !img.complete) return;
 
-    // Use CSS pixel dimensions because context is DPR-scaled.
     const viewportWidth = canvas.clientWidth || window.innerWidth;
     const viewportHeight = canvas.clientHeight || window.innerHeight;
 
-    // Cover the entire viewport (cover behavior)
     const canvasRatio = viewportWidth / viewportHeight;
     const imgRatio = img.width / img.height;
-    
+
     let renderWidth = viewportWidth;
     let renderHeight = viewportHeight;
     let offsetX = 0;
     let offsetY = 0;
-    
+
     if (canvasRatio > imgRatio) {
       renderWidth = viewportWidth;
       renderHeight = viewportWidth / imgRatio;
@@ -51,16 +59,16 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
       renderWidth = viewportHeight * imgRatio;
       offsetX = (viewportWidth - renderWidth) / 2;
     }
-    
+
     ctx.clearRect(0, 0, viewportWidth, viewportHeight);
     ctx.drawImage(img, offsetX, offsetY, renderWidth, renderHeight);
     currentFrameRef.current = index;
   }, []);
 
   useEffect(() => {
-    let cancelled = false;
+    if (isMobile) return; // Skip heavy frame loading on mobile
 
-    // Pre-allocate the array
+    let cancelled = false;
     const imgs: HTMLImageElement[] = new Array(FRAME_COUNT);
 
     for (let i = 0; i < FRAME_COUNT; i++) {
@@ -71,7 +79,6 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
 
       const onLoaded = () => {
         if (cancelled) return;
-        // If this is the first frame, or if it happens to be the currently requested frame, draw it.
         if (i === 0 || i === currentFrameRef.current) {
           drawFrame(i);
         }
@@ -87,7 +94,7 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
     return () => {
       cancelled = true;
     };
-  }, [drawFrame]);
+  }, [drawFrame, isMobile]);
 
   const scheduleFrame = useCallback(
     (frame: number) => {
@@ -106,6 +113,7 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
   );
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (isMobile) return;
     if (imagesRef.current.length === 0) return;
     const currentFrame = Math.min(
       LAST_FRAME_INDEX,
@@ -115,6 +123,8 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
   });
 
   useEffect(() => {
+    if (isMobile) return; // Skip canvas setup on mobile
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -150,7 +160,7 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
         resizeRafRef.current = null;
       });
     };
-    
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
@@ -162,16 +172,38 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [drawFrame, scrollYProgress]);
+  }, [drawFrame, scrollYProgress, isMobile]);
 
+  // ── MOBILE: lightweight static hero ──────────────────────────────────────
+  if (isMobile) {
+    return (
+      <div ref={containerRef} className="relative bg-[#121212]">
+        <div
+          className="h-screen w-full overflow-hidden flex items-center justify-center"
+          style={{
+            background:
+              "radial-gradient(ellipse at 60% 40%, #1a1a2e 0%, #121212 70%)",
+          }}
+        >
+          {/* Subtle purple glow */}
+          <div
+            className="absolute inset-0 opacity-30 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.25) 0%, transparent 70%)",
+            }}
+          />
+          {children}
+        </div>
+      </div>
+    );
+  }
+
+  // ── DESKTOP: full canvas scrollytelling ──────────────────────────────────
   return (
     <div ref={containerRef} className="relative h-[500vh] bg-[#121212]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
-        />
-        {/* Overlay sections will sit on top of the canvas */}
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
         {children}
       </div>
     </div>

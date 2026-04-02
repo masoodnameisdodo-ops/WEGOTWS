@@ -9,6 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
+    // Skip Lenis on mobile/touch devices — it causes crashes and scroll issues
+    const isMobile = window.matchMedia("(max-width: 768px)").matches || "ontouchstart" in window;
+    if (isMobile) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
